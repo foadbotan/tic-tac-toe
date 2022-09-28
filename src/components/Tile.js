@@ -1,3 +1,3 @@
 export default function Tile() {
-  return <div>Tile</div>;
+  return <div className="tile">X</div>;
 }

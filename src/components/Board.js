@@ -4,7 +4,7 @@ import Tile from "./Tile";
 export default function Board() {
   const [board, setBoard] = useState(Array(9).fill(null));
   return (
-    <div>
+    <div className="board">
       {board.map((value, index) => (
         <Tile key={index} value={value} />
       ))}
