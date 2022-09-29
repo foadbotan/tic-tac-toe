@@ -43,6 +43,7 @@ main {
   cursor: pointer;
 }
 
-.tile:hover {
+.hover {
   background-color: #eee;
+  color: hsl(0 0% 0% / 0.3);
 }
