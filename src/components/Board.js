@@ -6,10 +6,18 @@ export default function Board() {
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [winner, setWinner] = useState(null);
 
+  const gameOver = winner !== null;
+
   function updateTile(index) {
-    if (board[index] || winner) return;
+    if (board[index] || gameOver) return;
     setBoard((prevBoard) => prevBoard.map((value, i) => (i === index ? currentPlayer : value)));
     setCurrentPlayer((prevPlayer) => (prevPlayer === "X" ? "O" : "X"));
+  }
+
+  function checkDraw() {
+    if (gameOver || board.includes(null)) return;
+
+    setWinner("draw");
   }
 
   function checkHasWinner() {
@@ -29,7 +37,9 @@ export default function Board() {
 
     winningCombinations.forEach(([a, b, c]) => {
       const combination = board[a] + board[b] + board[c];
-      if (combination === "XXX" || combination === "OOO") setWinner(board[a]);
+      if (combination === "XXX" || combination === "OOO") {
+        setWinner(board[a]);
+      }
     });
   }
 
@@ -37,10 +47,6 @@ export default function Board() {
     setBoard(Array(9).fill(null));
     setCurrentPlayer("X");
     setWinner(null);
-  }
-
-  function checkDraw() {
-    if (board.every((value) => value !== null) && winner === null) setWinner("draw");
   }
 
   useEffect(() => {
@@ -58,11 +64,12 @@ export default function Board() {
             index={index}
             currentPlayer={currentPlayer}
             updateTile={updateTile}
+            gameOver={gameOver}
           />
         ))}
       </div>
 
-      {winner && (
+      {gameOver && (
         <>
           <h2>{winner === "draw" ? "It's a draw!" : `Player ${winner} wins!`}</h2>
           <button onClick={resetGame}>Play again</button>
