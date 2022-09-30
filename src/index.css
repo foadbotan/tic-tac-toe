@@ -54,10 +54,10 @@ main {
   font-weight: bold;
   color: #000;
   background-color: #fff;
-  cursor: pointer;
 }
 
 .hover {
   background-color: #eee;
   color: hsl(0 0% 0% / 0.3);
+  cursor: pointer;
 }
