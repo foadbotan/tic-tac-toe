@@ -5,6 +5,7 @@ export default function Board() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [winner, setWinner] = useState(null);
+  const [winningCombination, setWinningCombination] = useState([]);
 
   const gameOver = winner !== null;
 
@@ -42,6 +43,7 @@ export default function Board() {
       const combination = board[a] + board[b] + board[c];
       if (combination === "XXX" || combination === "OOO") {
         setWinner(board[a]);
+        setWinningCombination([a, b, c]);
       }
     });
   }
@@ -50,6 +52,7 @@ export default function Board() {
     setBoard(Array(9).fill(null));
     setCurrentPlayer("X");
     setWinner(null);
+    setWinningCombination([]);
   }
 
   useEffect(() => {
@@ -68,6 +71,7 @@ export default function Board() {
             currentPlayer={currentPlayer}
             updateTile={updateTile}
             gameOver={gameOver}
+            winningCombination={winningCombination}
           />
         ))}
       </div>
