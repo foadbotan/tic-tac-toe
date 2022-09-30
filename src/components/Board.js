@@ -7,7 +7,7 @@ export default function Board() {
   const [winner, setWinner] = useState(null);
 
   function updateTile(index) {
-    if (board[index]) return;
+    if (board[index] || winner) return;
     setBoard((prevBoard) => prevBoard.map((value, i) => (i === index ? currentPlayer : value)));
     setCurrentPlayer((prevPlayer) => (prevPlayer === "X" ? "O" : "X"));
   }
@@ -48,24 +48,26 @@ export default function Board() {
     checkHasWinner();
   }, [board]);
 
-  useEffect(() => {
-    if (winner) {
-      console.log(winner === "draw" ? "Draw" : `Player ${winner} won!`);
-      resetGame();
-    }
-  }, [winner]);
-
   return (
-    <div className="board">
-      {board.map((value, index) => (
-        <Tile
-          key={index}
-          value={value}
-          index={index}
-          currentPlayer={currentPlayer}
-          updateTile={updateTile}
-        />
-      ))}
-    </div>
+    <>
+      <div className="board">
+        {board.map((value, index) => (
+          <Tile
+            key={index}
+            value={value}
+            index={index}
+            currentPlayer={currentPlayer}
+            updateTile={updateTile}
+          />
+        ))}
+      </div>
+
+      {winner && (
+        <>
+          <h2>{winner === "draw" ? "It's a draw!" : `Player ${winner} wins!`}</h2>
+          <button onClick={resetGame}>Play again</button>
+        </>
+      )}
+    </>
   );
 }
