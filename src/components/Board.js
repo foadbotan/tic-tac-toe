@@ -9,13 +9,16 @@ export default function Board() {
   const gameOver = winner !== null;
 
   function updateTile(index) {
-    if (board[index] || gameOver) return;
+    const tileUsed = board[index];
+    if (tileUsed || gameOver) return;
+
     setBoard((prevBoard) => prevBoard.map((value, i) => (i === index ? currentPlayer : value)));
     setCurrentPlayer((prevPlayer) => (prevPlayer === "X" ? "O" : "X"));
   }
 
   function checkDraw() {
-    if (gameOver || board.includes(null)) return;
+    const boardHasUnusedTiles = board.includes(null);
+    if (gameOver || boardHasUnusedTiles) return;
 
     setWinner("draw");
   }
