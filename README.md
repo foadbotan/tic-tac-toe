@@ -1,7 +1,7 @@
-#Tic Tac Toe
+# Tic Tac Toe
 
 This is my simple implementation of Tic Tac Toe in React
 
-You can [play it online](https://www.markdownguide.org/basic-syntax/)
+You can [play it online](https://master--helpful-fairy-c19c4e.netlify.app/)
 
-![Screenshot](./src/images/tic-tac-toe-screenshot.png "Screenshot of Tic Tac Toe game")
+![](./src/images/tic-tac-toe-screenshot.png "Screenshot of Tic Tac Toe game")
