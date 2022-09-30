@@ -4,5 +4,5 @@ This is my implementation of the game [Tic Tac Toe](https://en.wikipedia.org/wik
 
 You can play it online [here](https://master--helpful-fairy-c19c4e.netlify.app/)
 
-[![](./screenshot.png "Screenshot of Tic Tac Toe game")
-](#)
+<!-- [![](./screenshot.png "Screenshot of Tic Tac Toe game")
+](#) -->
